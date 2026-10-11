@@ -1,0 +1,143 @@
+@charset "UTF-8";
+
+/* ===================================================
+   인쇄/출판 전용 CSS (CSS Paged Media 규격)
+   판형: A5 (148mm x 210mm) 기준 (일반 단행본 판형)
+   =================================================== */
+
+@page {
+    size: A5;
+    margin-top: 22mm;
+    margin-bottom: 22mm;
+    margin-inside: 20mm;  /* 책 안쪽 제본 여백 */
+    margin-outside: 16mm; /* 책 바깥쪽 여백 */
+    
+    @bottom-center {
+        content: counter(page);
+        font-family: 'Pretendard', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+        font-size: 9pt;
+        color: #666;
+    }
+}
+
+/* 첫 페이지 (표지/타이틀 페이지) 여백 및 페이지 번호 숨김 */
+@page:first {
+    margin: 0;
+    @bottom-center {
+        content: "";
+    }
+}
+
+body {
+    font-family: 'Pretendard', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+    font-size: 10pt;
+    line-height: 1.75;
+    color: #1a1a1a;
+    word-break: keep-all;
+    text-align: justify;
+}
+
+/* 제목 스타일 */
+h1 {
+    font-size: 20pt;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    page-break-before: always; /* 대제목은 새 페이지에서 시작 */
+    color: #0f172a;
+    border-bottom: 2px solid #0284c7;
+    padding-bottom: 8px;
+}
+
+h2 {
+    font-size: 14pt;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: #1e293b;
+    page-break-after: avoid;
+}
+
+h3 {
+    font-size: 11pt;
+    font-weight: 600;
+    margin-top: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #334155;
+    page-break-after: avoid;
+}
+
+/* 인용구 스타일 */
+blockquote {
+    margin: 1.2rem 0;
+    padding: 0.8rem 1.2rem;
+    background-color: #f8fafc;
+    border-left: 4px solid #0284c7;
+    font-style: italic;
+    color: #475569;
+    page-break-inside: avoid;
+}
+
+/* 코드 블록 */
+pre {
+    background-color: #0f172a;
+    color: #f8fafc;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 8.5pt;
+    line-height: 1.5;
+    overflow-x: auto;
+    page-break-inside: avoid;
+}
+
+code {
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 9pt;
+    background-color: #f1f5f9;
+    color: #0f172a;
+    padding: 2px 5px;
+    border-radius: 4px;
+}
+
+/* 표 스타일 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 9pt;
+    page-break-inside: avoid;
+}
+
+th, td {
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+}
+
+th {
+    background-color: #f1f5f9;
+    font-weight: 600;
+    color: #0f172a;
+}
+
+/* 목차 (TOC) 스타일 */
+nav#TOC {
+    page-break-after: always;
+    padding: 20px 0;
+}
+
+nav#TOC ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+nav#TOC li {
+    margin-bottom: 8px;
+    border-bottom: 1px dotted #cbd5e1;
+    padding-bottom: 4px;
+}
+
+nav#TOC a {
+    text-decoration: none;
+    color: #0f172a;
+}
